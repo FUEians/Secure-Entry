@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>dev.noureldin.pms</groupId>
+    <artifactId>secure-entry</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>23</maven.compiler.release>
+        <exec.mainClass>App.Main</exec.mainClass>
+    </properties>
+    
+    <name>Secure Entry</name>
+    <description>
+        A lightweight, extensible password management system using Java Swing for GUI, 
+        JSON for data persistence, and JUnit for testing core encryption and storage logic.
+    </description>
+    
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <comments>
+                This project is open source and distributed under the Apache License 2.0.
+                It allows you to use, modify, and distribute the code with proper attribution.
+            </comments>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <developers> 
+        <developer>
+            <name>Noureldin Hossam</name>
+            <email>noureeldinhossamm@gmail.com</email>
+            <organization>Future University in Egypt</organization>
+            <organizationUrl>https://www.fue.edu.eg/</organizationUrl>
+            <roles>
+                <role>Team Leader</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        
+        <developer>
+            <name>Hala Mohamed</name>
+            <email>Halalkazmuz@gmail.com</email>
+            <organization>Future University in Egypt</organization>
+            <organizationUrl>https://www.fue.edu.eg/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        
+        <developer>
+            <name>Nour Riad</name>
+            <email>noorriyadh146@gmail.com</email>
+            <organization>Future University in Egypt</organization>
+            <organizationUrl>https://www.fue.edu.eg/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.0</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>
