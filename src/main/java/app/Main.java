@@ -1,5 +1,4 @@
 package App;
-// Entry Point
 
 public class Main {
 
