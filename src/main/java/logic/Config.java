@@ -1,10 +1,14 @@
 package logic;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.InputStream;
+import javax.swing.JButton;
 
 public final class Config {
-
+    
+    public static final String PROJECT_NAME = "Secure Entry";
     public static final int FRAME_WIDTH = 1280;
     public static final int FRAME_HEIGHT = 800;
 
@@ -14,15 +18,33 @@ public final class Config {
     public static final Color DARK_GREEN = new Color(0x169976);
     public static final Color CULTURED = new Color(0xF5F5F5);
 
-    // Protest Guerrilla Fonts
+    public static final Dimension SMALL_BUTTON_SIZE = new Dimension(150, 50);
+    public static final Dimension MEDIUM_BUTTON_SIZE = new Dimension(200, 60);
+    public static final Dimension LARGE_BUTTON_SIZE = new Dimension(460, 60);
+
+    public static final String AVATAR_1 = "/images/Avatar-1.png";
+    public static final String AVATAR_2 = "/images/Avatar-2.png";
+    public static final String AVATAR_3 = "/images/Avatar-3.png";
+    public static final String AVATAR_4 = "/images/Avatar-4.png";
+    public static final String AVATAR_5 = "/images/Avatar-5.png";
+    public static final String AVATAR_6 = "/images/Avatar-6.png";
+
+    public static final String IMAGE_1 = "/images/Image-1.png";
+    public static final String IMAGE_2 = "/images/Image-2.png";
+    public static final String IMAGE_3 = "/images/Image-3.png";
+    public static final String IMAGE_4 = "/images/Image-4.png";
+    public static final String IMAGE_5 = "/images/Image-5.png";
+
+    public static final String LOGO_IMAGE = "/images/Logo.png";
+    public static final String LOGO_IMAGE_ICON = "/images/Logo-icon.png";
+    public static final String LOGO_ICON = "/images/Logo.ico";
+
     public static final Font LOGO_FONT_LARGE = loadFont("/fonts/Protest_Guerrilla/ProtestGuerrilla-Regular.ttf", 70f);
     public static final Font LOGO_FONT_SMALL = loadFont("/fonts/Protest_Guerrilla/ProtestGuerrilla-Regular.ttf", 30f);
 
-    // Poppins ExtraBold Fonts
     public static final Font POPPINS_EXTRABOLD_30 = loadFont("/fonts/Poppins/Poppins-ExtraBold.ttf", 30f);
     public static final Font POPPINS_EXTRABOLD_40 = loadFont("/fonts/Poppins/Poppins-ExtraBold.ttf", 40f);
 
-    // Poppins Regular Fonts
     public static final Font POPPINS_REGULAR_15 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 15f);
     public static final Font POPPINS_REGULAR_20 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 20f);
     public static final Font POPPINS_REGULAR_30 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 30f);
@@ -41,5 +63,30 @@ public final class Config {
             System.err.println("Could not load font: " + path);
             return new Font("SansSerif", Font.PLAIN, (int) size);
         }
+    }
+
+    public static MouseAdapter applyDarkStyleButtonEffect() {
+        return new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(new Color(0x2D2D2D));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(JET_BLACK);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                ((JButton) e.getSource()).setFocusable(false);
+                ((JButton) e.getSource()).setBackground(new Color(0x1A1A1A));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(JET_BLACK);
+            }
+        };
     }
 }
