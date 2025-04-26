@@ -39,7 +39,7 @@ public class SplashScreen extends JFrame {
         logoLabel.setVerticalTextPosition(JLabel.BOTTOM);
         panel.add(logoLabel);
         panel.setOpaque(false);
-        GradientPanel background = new GradientPanel();
+        GradientPanel background = new GradientPanel(false);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.CENTER;
         background.setLayout(new GridBagLayout());
