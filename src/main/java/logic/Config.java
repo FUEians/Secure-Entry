@@ -21,7 +21,11 @@ public final class Config {
     public static final Dimension SMALL_BUTTON_SIZE = new Dimension(150, 50);
     public static final Dimension MEDIUM_BUTTON_SIZE = new Dimension(200, 60);
     public static final Dimension LARGE_BUTTON_SIZE = new Dimension(460, 60);
-
+    
+    public static final Dimension DEFAULT_TEXT_FIELD_SIZE = new Dimension(460, 60);
+    public static final Dimension SEARCH_TEXT_FIELD_SIZE = new Dimension(360, 56);
+    public static final Dimension ACCOUNT_TEXT_FIELD_SIZE = new Dimension(370, 45);
+    
     public static final String AVATAR_1 = "/images/Avatar-1.png";
     public static final String AVATAR_2 = "/images/Avatar-2.png";
     public static final String AVATAR_3 = "/images/Avatar-3.png";
@@ -34,7 +38,10 @@ public final class Config {
     public static final String IMAGE_3 = "/images/Image-3.png";
     public static final String IMAGE_4 = "/images/Image-4.png";
     public static final String IMAGE_5 = "/images/Image-5.png";
-
+    
+    public static final String NOT_SELECTED_CHECK_BOX = "/images/Check-box-not-selected.png";
+    public static final String SELECTED_CHECK_BOX = "/images/Check-box-selected.png";
+    
     public static final String LOGO_IMAGE = "/images/Logo.png";
     public static final String LOGO_IMAGE_ICON = "/images/Logo-icon.png";
     public static final String LOGO_ICON = "/images/Logo.ico";
@@ -47,6 +54,7 @@ public final class Config {
 
     public static final Font POPPINS_REGULAR_15 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 15f);
     public static final Font POPPINS_REGULAR_20 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 20f);
+    public static final Font POPPINS_REGULAR_25 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 25f); // for default text field
     public static final Font POPPINS_REGULAR_30 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 30f);
     public static final Font POPPINS_REGULAR_37 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 37f);
 
