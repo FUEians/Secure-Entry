@@ -2,8 +2,7 @@ package App;
 
 import gui.pages.*;
 import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
+import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class Main {
@@ -13,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         splashScreen = new SplashScreen();
-        Action openLandingPageAction = new AbstractAction() {
+        ActionListener openLandingPageAction = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 landingPage = new LandingPage();
@@ -23,5 +22,6 @@ public class Main {
         Timer timer = new Timer(3000, openLandingPageAction);
         timer.setRepeats(false);
         timer.start();
+        
     }
 }
