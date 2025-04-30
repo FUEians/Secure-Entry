@@ -15,6 +15,8 @@ import gui.components.GradientPanel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,7 +26,8 @@ import javax.swing.SwingConstants;
 import static logic.Config.*;
 
 public class LandingPage extends JFrame {
-
+    private LandingPage landingPage = this;
+    
     public LandingPage() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle(PROJECT_NAME);
@@ -72,12 +75,20 @@ public class LandingPage extends JFrame {
                 JET_BLACK,
                 applyDarkStyleButtonEffect()
         );
+        
         Button signupBtn = new Button(
                 "Sign Up",
                 MEDIUM_BUTTON_SIZE,
                 POPPINS_EXTRABOLD_30,
                 JET_BLACK,
-                applyDarkStyleButtonEffect()
+                applyDarkStyleButtonEffect(),
+                new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new RegistrationPage();
+                    landingPage.setVisible(false);
+                }
+            }
         );
 
         buttonPanel.add(loginBtn);
@@ -102,5 +113,7 @@ public class LandingPage extends JFrame {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(JET_BLACK);
         this.setVisible(true);
+
     }
+
 }
