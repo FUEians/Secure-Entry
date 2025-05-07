@@ -16,12 +16,11 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 landingPage = new LandingPage();
-                splashScreen.dispose(); 
+                splashScreen.dispose();
             }
         };
         Timer timer = new Timer(3000, openLandingPageAction);
         timer.setRepeats(false);
         timer.start();
-        
     }
 }

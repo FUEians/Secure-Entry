@@ -42,6 +42,10 @@ public final class Config {
     public static final String NOT_SELECTED_CHECK_BOX = "/images/Check-box-not-selected.png";
     public static final String SELECTED_CHECK_BOX = "/images/Check-box-selected.png";
     
+    public static final String OPENED_EYE = "/images/Eye.png";
+    public static final String CLOSED_EYE = "/images/Eye-off.png";
+    public static final int EYE_SIZE = 40;
+    
     public static final String LOGO_IMAGE = "/images/Logo.png";
     public static final String LOGO_IMAGE_ICON = "/images/Logo-icon.png";
     public static final String LOGO_ICON = "/images/Logo.ico";
@@ -57,10 +61,12 @@ public final class Config {
     public static final Font POPPINS_REGULAR_25 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 25f); // for default text field
     public static final Font POPPINS_REGULAR_30 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 30f);
     public static final Font POPPINS_REGULAR_37 = loadFont("/fonts/Poppins/Poppins-Regular.ttf", 37f);
+    
+    public static final String USERS_FILE_PATH = "users.json";
 
     private Config() {
         throw new UnsupportedOperationException("Utility class -> cannot be instantiated");
-    }
+    }   
 
     private static Font loadFont(String path, float size) {
         try (InputStream is = Config.class.getResourceAsStream(path)) {

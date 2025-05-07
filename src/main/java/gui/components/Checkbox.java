@@ -10,12 +10,12 @@ public class Checkbox extends JCheckBox {
     
     private final JLabel CheckboxText;
     
-    public Checkbox(String text) {
+    public Checkbox(String text, String notSelectedIcon, String selectedIcon) {
         ToolTip.applyDefaultStyle();
         this.setToolTipText(text);
         this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        this.setIcon(new ImageIcon(getClass().getResource(NOT_SELECTED_CHECK_BOX)));
-        this.setSelectedIcon(new ImageIcon(getClass().getResource(SELECTED_CHECK_BOX)));
+        this.setIcon(new ImageIcon(getClass().getResource(notSelectedIcon)));
+        this.setSelectedIcon(new ImageIcon(getClass().getResource(selectedIcon)));
         
         this.CheckboxText = new JLabel(text);
         this.CheckboxText.setFont(POPPINS_REGULAR_20);

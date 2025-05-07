@@ -26,7 +26,7 @@ import javax.swing.SwingConstants;
 import static logic.Config.*;
 
 public class LandingPage extends JFrame {
-    private LandingPage landingPage = this;
+    private final LandingPage landingPage = this;
     
     public LandingPage() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +39,6 @@ public class LandingPage extends JFrame {
 
         GradientPanel welcomePanel = new GradientPanel(true);
         welcomePanel.setLayout(new BorderLayout());
-        welcomePanel.setOpaque(false);
 
         JLabel welcomeLabel = new JLabel("Welcome to " + PROJECT_NAME);
         welcomeLabel.setFont(POPPINS_EXTRABOLD_40);
@@ -73,7 +72,14 @@ public class LandingPage extends JFrame {
                 MEDIUM_BUTTON_SIZE,
                 POPPINS_EXTRABOLD_30,
                 JET_BLACK,
-                applyDarkStyleButtonEffect()
+                applyDarkStyleButtonEffect(),
+                new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new LoginPage();
+                    landingPage.setVisible(false);
+                }
+            }
         );
         
         Button signupBtn = new Button(
