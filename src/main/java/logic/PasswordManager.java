@@ -27,21 +27,18 @@ public class PasswordManager {
         }
     }
 
-    // Add a new Category
     public void addCategory(Category category) {
         categories.add(category);
         saveCategories();
 
     }
 
-    // Remove  Category
     public void removeCategory(Category category) {
         categories.remove(category);
         saveCategories();
 
     }
 
-    // Add an account To category
     public void addAccountToCategory(String categoryName, AccountEntry account, SecretKey key)
             throws Exception {
 
@@ -70,12 +67,10 @@ public class PasswordManager {
         return EncryptionUtil.decrypt(encryptedPassword, key);
     }
 
-    // Save all categories to file
     private void saveCategories() {
         JsonStorage.saveToFile("categories.json", categories);
     }
 
-    // Get all categories
     public List<Category> getCategories() {
         return categories;
     }

@@ -1,25 +1,80 @@
 package gui.components;
 
-import java.awt.BasicStroke;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import javax.swing.BorderFactory;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+
 import static logic.Config.*;
 
-public class TextField extends JTextField {
+public class TextField extends JPanel {
 
-    private int arc = getHeight() / 2; 
+    private final JTextField textField;
+    private JCheckBox optionCheckBox = null;
     
     public TextField(Dimension dimension) {
-        this.setPreferredSize(dimension);
-        this.setFont(POPPINS_REGULAR_25);
-        this.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        this.setLayout(new BorderLayout());
         this.setOpaque(false);
-        this.setBorder(BorderFactory.createEmptyBorder(20, 15, 10, 25));
+        this.setPreferredSize(dimension);
+        this.setMaximumSize(dimension);
+        this.setMinimumSize(dimension);
+
+        textField = new JTextField();
+        textField.setOpaque(false);
+        textField.setFont(POPPINS_REGULAR_25);
+        textField.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        textField.setForeground(JET_BLACK);
+        textField.setBorder(new EmptyBorder(20, 15, 10, 25));
+
+        this.add(textField);
+    }
+
+    public TextField(Dimension dimension, String icon, int size) {
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+        this.setPreferredSize(dimension);
+        this.setMaximumSize(dimension);
+        this.setMinimumSize(dimension);
+
+        textField = new JTextField();
+        textField.setOpaque(false);
+        textField.setFont(POPPINS_REGULAR_25);
+        textField.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        textField.setForeground(JET_BLACK);
+        textField.setBorder(new EmptyBorder(20, 15, 10, 25));
+
+        ImageIcon uncheckedIcon = new ImageIcon(getClass().getResource(icon));
+        ImageIcon checkedIcon = new ImageIcon(getClass().getResource(icon));
+        Image scaledUnchecked = uncheckedIcon.getImage().getScaledInstance(size, size, Image.SCALE_SMOOTH);
+        Image scaledChecked = checkedIcon.getImage().getScaledInstance(size, size, Image.SCALE_SMOOTH);
+
+        optionCheckBox = new JCheckBox();
+        optionCheckBox.setIcon(new ImageIcon(scaledUnchecked));
+        optionCheckBox.setSelectedIcon(new ImageIcon(scaledChecked));
+        optionCheckBox.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        optionCheckBox.setOpaque(false);
+
+        JPanel iconPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
+        iconPanel.setOpaque(false);
+        iconPanel.add(optionCheckBox);
+
+        this.add(textField, BorderLayout.CENTER);
+        this.add(iconPanel, BorderLayout.EAST);
+    }
+
+    public JCheckBox getOptionCheckBox() {
+        return optionCheckBox;
+    }
+
+    public JTextField getField() {
+        return textField;
+    }
+
+    public String getText() {
+        return textField.getText();
+    }
+
+    public void setText(String text) {
+        textField.setText(text);
     }
 
     @Override
@@ -29,7 +84,6 @@ public class TextField extends JTextField {
         g2.setColor(CULTURED);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 18, 18);
         g2.dispose();
-
         super.paintComponent(g);
     }
 
@@ -43,4 +97,7 @@ public class TextField extends JTextField {
         g2.dispose();
     }
 
+    public void setHorizontalAlignment(int LEFT) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

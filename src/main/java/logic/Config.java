@@ -26,6 +26,8 @@ public final class Config {
     public static final Dimension SEARCH_TEXT_FIELD_SIZE = new Dimension(360, 56);
     public static final Dimension ACCOUNT_TEXT_FIELD_SIZE = new Dimension(370, 45);
     
+    public static final Dimension HEADER_SIZE = new Dimension(1280, 112);
+    
     public static final String AVATAR_1 = "/images/Avatar-1.png";
     public static final String AVATAR_2 = "/images/Avatar-2.png";
     public static final String AVATAR_3 = "/images/Avatar-3.png";
@@ -45,6 +47,9 @@ public final class Config {
     public static final String OPENED_EYE = "/images/Eye.png";
     public static final String CLOSED_EYE = "/images/Eye-off.png";
     public static final int EYE_SIZE = 40;
+    
+    public static final String SEARCH = "/images/Search.png";
+    public static final int SEARCH_ICON_SIZE = 40;
     
     public static final String LOGO_IMAGE = "/images/Logo.png";
     public static final String LOGO_IMAGE_ICON = "/images/Logo-icon.png";
