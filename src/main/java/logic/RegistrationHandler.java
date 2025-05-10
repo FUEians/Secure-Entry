@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import static logic.Config.*;
 import models.User;
 
@@ -17,22 +18,38 @@ public class RegistrationHandler {
     }
 
     public boolean register(String name, String email, String password, String repeatedPassword) {
+        if (!verifyName(name)) {
+            
+        }
         if (isEmailTaken(email)) {
             return false;
         }
-        if (verifyEmail(email) == false) {
+        if (!verifyEmail(email)) {
             return false;
         }
-        if (verifyPassword(password) == false) {
+        if (!verifyPassword(password)) {
             return false;
         }
-        if (confirmPassword(password, repeatedPassword) == false) {
+        if (!confirmPassword(password, repeatedPassword)) {
             return false;
         }
         String hashedPassword = HashUtil.hashPassword(password);
-        User newUser = new User(name, email, hashedPassword);
+        String userId = UUID.randomUUID().toString();
+        User newUser = new User(userId, name, email, hashedPassword);
         users.add(newUser);
         JsonStorage.saveToFile(USERS_FILE_PATH, users);
+        return true;
+    }
+
+    private boolean verifyName(String name) {
+        if (name.isEmpty() || name.length() > 10) {
+            return false;
+        }
+        for (char c : name.toCharArray()) {
+            if (!Character.isLetter(c)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -81,13 +98,12 @@ public class RegistrationHandler {
         }
         return hasUppercase && hasLowercase && hasDigit && hasSymbol;
     }
-    
+
     private boolean confirmPassword(String password, String repeatedPassword) {
         if (password.equals(repeatedPassword)) {
             return true;
         }
         return false;
     }
-    
 
 }

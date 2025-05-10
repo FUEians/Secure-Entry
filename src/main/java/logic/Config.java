@@ -17,10 +17,15 @@ public final class Config {
     public static final Color LIGHT_GREEN = new Color(0x1DCD9F);
     public static final Color DARK_GREEN = new Color(0x169976);
     public static final Color CULTURED = new Color(0xF5F5F5);
-
+    
+    public static final Dimension ADD_BUTTON_SIZE = new Dimension(70, 70);
+    public static final Dimension ADD_ACCOUNT_BUTTON_SIZE = new Dimension(40, 40);
     public static final Dimension SMALL_BUTTON_SIZE = new Dimension(150, 50);
     public static final Dimension MEDIUM_BUTTON_SIZE = new Dimension(200, 60);
     public static final Dimension LARGE_BUTTON_SIZE = new Dimension(460, 60);
+    public static final Dimension OK_BUTTON_SIZE = new Dimension(80, 40);
+    public static final Dimension SUBMIT_BUTTON_SIZE = new Dimension(120, 40);
+
     
     public static final Dimension DEFAULT_TEXT_FIELD_SIZE = new Dimension(460, 60);
     public static final Dimension SEARCH_TEXT_FIELD_SIZE = new Dimension(360, 56);
@@ -54,10 +59,13 @@ public final class Config {
     public static final String LOGO_IMAGE = "/images/Logo.png";
     public static final String LOGO_IMAGE_ICON = "/images/Logo-icon.png";
     public static final String LOGO_ICON = "/images/Logo.ico";
+    
+    public static final String ERROR_ICON = "/images/Error.png";
 
     public static final Font LOGO_FONT_LARGE = loadFont("/fonts/Protest_Guerrilla/ProtestGuerrilla-Regular.ttf", 70f);
     public static final Font LOGO_FONT_SMALL = loadFont("/fonts/Protest_Guerrilla/ProtestGuerrilla-Regular.ttf", 30f);
 
+    public static final Font POPPINS_EXTRABOLD_20 = loadFont("/fonts/Poppins/Poppins-ExtraBold.ttf", 20f);
     public static final Font POPPINS_EXTRABOLD_30 = loadFont("/fonts/Poppins/Poppins-ExtraBold.ttf", 30f);
     public static final Font POPPINS_EXTRABOLD_40 = loadFont("/fonts/Poppins/Poppins-ExtraBold.ttf", 40f);
 
@@ -82,6 +90,35 @@ public final class Config {
             System.err.println("Could not load font: " + path);
             return new Font("SansSerif", Font.PLAIN, (int) size);
         }
+    }
+    
+    private static final Color LIGHT_GREEN_MAIN = new Color(0x1DCD9F);
+    private static final Color LIGHT_GREEN_HOVER = new Color(0x17B890);    
+    private static final Color LIGHT_GREEN_PRESSED = new Color(0x139B79);  
+
+    public static MouseAdapter applyLightGreenStyleButtonEffect() {
+        return new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(LIGHT_GREEN_HOVER);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(LIGHT_GREEN_MAIN);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                ((JButton) e.getSource()).setFocusable(false);
+                ((JButton) e.getSource()).setBackground(LIGHT_GREEN_PRESSED);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(LIGHT_GREEN_MAIN);
+            }
+        };
     }
 
     public static MouseAdapter applyDarkStyleButtonEffect() {

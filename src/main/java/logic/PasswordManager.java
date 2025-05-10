@@ -9,21 +9,32 @@ PasswordManager (Logic):
  */
 package logic;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import models.Category;
 import models.AccountEntry;
 import javax.crypto.SecretKey;
+import static logic.Config.USERS_FILE_PATH;
 import logic.EncryptionUtil;
+import models.User;
 
 public class PasswordManager {
 
-    private List< Category> categories;
+    private List<Category> categories;
+    private List<User> users;
+    private User user;
 
     public PasswordManager() {
+
+        File file = new File(USERS_FILE_PATH);
         categories = JsonStorage.loadFromFile("Category", Category.class);
+        users = JsonStorage.loadFromFile(file.getPath(), User.class);
         if (categories == null) {
             categories = new ArrayList<>();
+        }
+        if (users == null) {
+            users = new ArrayList<>();
         }
     }
 
@@ -44,8 +55,8 @@ public class PasswordManager {
 
         for (Category c : categories) {
             if (c.getName().equals(categoryName)) {
-                String encrypted = EncryptionUtil.encrypt(account.getPassword(), key);
-                account.setPassword(encrypted);
+//                String encrypted = EncryptionUtil.encrypt(account.getPassword(), key);
+//                account.setPassword(encrypted);
                 c.addAccount(account);
                 saveCategories();
                 return;
@@ -75,4 +86,53 @@ public class PasswordManager {
         return categories;
     }
 
+    public boolean validUser(String name, String email) {
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                if (user.getEmail().equals(email)) {
+                    this.user = user;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean verifyPassword(String password) {
+        if (password.isEmpty() || password.length() < 8) {
+            return false;
+        }
+        boolean hasUppercase = false;
+        boolean hasLowercase = false;
+        boolean hasDigit = false;
+        boolean hasSymbol = false;
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUppercase = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLowercase = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else {
+                hasSymbol = true;
+            }
+        }
+        return hasUppercase && hasLowercase && hasDigit && hasSymbol;
+    }
+
+    public boolean confirmPassword(String password, String repeatedPassword) {
+        if (password.equals(repeatedPassword)) {
+            return true;
+        }
+        return false;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+    
 }

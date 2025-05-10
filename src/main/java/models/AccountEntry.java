@@ -1,16 +1,27 @@
 // Represents an account with fields like email and password.
 package models;
-public class AccountEntry {
-    private String email;
-    private String password; 
 
-    public AccountEntry(String email, String password) {
+import javax.crypto.SecretKey;
+
+public class AccountEntry {
+
+    private String name;
+    private String email;
+    private String plainPassword;
+    private SecretKey key;
+
+    public AccountEntry(String name, String email, String password) {
+        this.name = name;
         this.email = email;
-        this.password = password;
+//        this.password = password;
     }
 
-    public AccountEntry() {
-        
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -21,11 +32,11 @@ public class AccountEntry {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 }

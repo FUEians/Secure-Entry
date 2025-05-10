@@ -1,6 +1,7 @@
 package logic;
 
 import com.google.gson.Gson; 
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public final class JsonStorage {
 
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static <T> void saveToFile(String filePath, List<T> data) {
         try (Writer writer = new FileWriter(filePath)) {

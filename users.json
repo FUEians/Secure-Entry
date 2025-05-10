@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "Id": "42795bae-97ab-42c6-af9a-27e961b8ba5c",
+    "name": "Noureldin",
+    "email": "noureldin@gmail.com",
+    "password": "$2a$10$xSYawvxEkgoUFxxhjJSHDe8vNUl7YmEbGYz9lTwZY38.nT9HvOCH6"
+  },
+  {
+    "Id": "4f15729c-cc10-4ef8-bf1e-a28031e615e7",
+    "name": "Noureldin",
+    "email": "noureldinh@gmail.com",
+    "password": "$2a$10$aDk5wVT3TvdpFMYnhgz5d.LITLBqIFhY14Uapuo1Xxknz0qbOA50y",
+    "categories": []
+  }
+]

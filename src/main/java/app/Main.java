@@ -22,5 +22,6 @@ public class Main {
         Timer timer = new Timer(3000, openLandingPageAction);
         timer.setRepeats(false);
         timer.start();
+//            Dashboard dashboard = new Dashboard("42795bae-97ab-42c6-af9a-27e961b8ba5c");
     }
 }
