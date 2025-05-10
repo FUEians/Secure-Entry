@@ -203,7 +203,6 @@ public class Dashboard extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 AddCategoryForm cat = new AddCategoryForm(dashboard, user);
             }
-
         }
         );
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));

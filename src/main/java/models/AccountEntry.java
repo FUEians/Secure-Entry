@@ -7,7 +7,7 @@ public class AccountEntry {
 
     private String name;
     private String email;
-    private String plainPassword;
+    private String password;
     private SecretKey key;
 
     public AccountEntry(String name, String email, String password) {
@@ -32,11 +32,11 @@ public class AccountEntry {
         this.email = email;
     }
 
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

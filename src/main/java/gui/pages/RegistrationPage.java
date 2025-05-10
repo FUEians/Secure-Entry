@@ -84,10 +84,10 @@ public class RegistrationPage extends JFrame {
         passwordLabel.setFont(POPPINS_REGULAR_20);
         passwordLabel.setForeground(JET_BLACK);
         PasswordField passwordTextField = new PasswordField(
-            DEFAULT_TEXT_FIELD_SIZE,
-            CLOSED_EYE,
-            OPENED_EYE,
-            40
+                DEFAULT_TEXT_FIELD_SIZE,
+                CLOSED_EYE,
+                OPENED_EYE,
+                40
         );
         passwordLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         passwordTextField.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -106,10 +106,10 @@ public class RegistrationPage extends JFrame {
         passwordConfirmationLabel.setFont(POPPINS_REGULAR_20);
         passwordConfirmationLabel.setForeground(JET_BLACK);
         PasswordField passwordConfirmationTextField = new PasswordField(
-            DEFAULT_TEXT_FIELD_SIZE,
-            CLOSED_EYE,
-            OPENED_EYE,
-            EYE_SIZE
+                DEFAULT_TEXT_FIELD_SIZE,
+                CLOSED_EYE,
+                OPENED_EYE,
+                EYE_SIZE
         );
         passwordConfirmationLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         passwordConfirmationTextField.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -121,26 +121,28 @@ public class RegistrationPage extends JFrame {
         passwordConfirmationPanel.setOpaque(false);
 
         Button signupBtn = new Button(
-            "Sign Up",
-            LARGE_BUTTON_SIZE,
-            POPPINS_EXTRABOLD_30,
-            JET_BLACK,
-            applyDarkStyleButtonEffect(),
-            new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    RegistrationHandler registrationHandler = new RegistrationHandler();
-                    boolean isRegistered = registrationHandler.register(
-                        nameTextField.getText(), 
-                        emailTextField.getText(), 
-                        passwordTextField.getText(), 
+                "Sign Up",
+                LARGE_BUTTON_SIZE,
+                POPPINS_EXTRABOLD_30,
+                JET_BLACK,
+                applyDarkStyleButtonEffect(),
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RegistrationHandler registrationHandler = new RegistrationHandler();
+                boolean isRegistered = registrationHandler.register(
+                        nameTextField.getText(),
+                        emailTextField.getText(),
+                        passwordTextField.getText(),
                         passwordConfirmationTextField.getText()
-                    );
-                    if (isRegistered) {
-                        new LoginPage();
-                        registrationPage.setVisible(false);
-                    }
+                );
+                if (isRegistered) {
+                    new LoginPage();
+                    registrationPage.setVisible(false);
+                } else {
+                    ErrorMessageForm errorMessage = new ErrorMessageForm(registrationPage);
                 }
+            }
         });
         signupBtn.setMaximumSize(LARGE_BUTTON_SIZE);
         signupBtn.setMinimumSize(LARGE_BUTTON_SIZE);
@@ -201,5 +203,14 @@ public class RegistrationPage extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        ActionListener openSignupInstructionsForm = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SignupInstructionsForm(registrationPage);
+            }
+        };
+        Timer timer = new Timer(300, openSignupInstructionsForm);
+        timer.setRepeats(false);
+        timer.start();
     }
 }

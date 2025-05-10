@@ -1,11 +1,9 @@
 package gui.components;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -15,7 +13,6 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import static logic.Config.*;
 import logic.PasswordManager;
 
@@ -68,7 +65,7 @@ public class ForgotPasswordForm extends JDialog {
                 boolean isVaildUser = pm.validUser(Nfield.getText(), Efield.getText());
                 if(isVaildUser) {
                     form.dispose(); 
-                    ResetPasswordForm resetPasswordForm = new ResetPasswordForm(parent, pm.getUsers(), pm.getUser());
+                    ResetPasswordForm resetPassword = new ResetPasswordForm(parent, pm.getUsers(), pm.getUser());
                 } else {
                     form.dispose();
                     ErrorMessageForm errorMessage = new ErrorMessageForm(parent); 

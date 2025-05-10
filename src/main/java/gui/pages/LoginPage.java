@@ -84,24 +84,21 @@ public class LoginPage extends JFrame {
 
         formPanel.add(Box.createRigidArea(new Dimension(0, 25)));
         Button loginbtn = new Button(
-            "Login",
-            LARGE_BUTTON_SIZE,
-            POPPINS_EXTRABOLD_30,
-            JET_BLACK,
-            applyDarkStyleButtonEffect(),
-            new ActionListener() {
+                "Login",
+                LARGE_BUTTON_SIZE,
+                POPPINS_EXTRABOLD_30,
+                JET_BLACK,
+                applyDarkStyleButtonEffect(),
+                new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LoginHandler loginHandler = new LoginHandler();
                 boolean isAuthenticated = loginHandler.authenticate(Efield.getText(), passwordField.getText());
                 if (isAuthenticated) {
-                    JFrame frame = new JFrame();
-                    frame.setTitle(PROJECT_NAME);
-                    frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-                    frame.setLocationRelativeTo(null);
-                    frame.setResizable(false);
-                    frame.setVisible(true);
+                    Dashboard dashboard = new Dashboard(loginHandler.getSessionId());
                     loginPage.setVisible(false);
+                } else {
+                    new ErrorMessageForm(loginPage);
                 }
             }
         }
@@ -114,7 +111,7 @@ public class LoginPage extends JFrame {
         formPanel.add(loginbtn);
 
         JPanel checkPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        
+
         Checkbox rememberMe = new Checkbox("Remember me", NOT_SELECTED_CHECK_BOX, SELECTED_CHECK_BOX);
         rememberMe.setOpaque(false);
 
@@ -126,6 +123,12 @@ public class LoginPage extends JFrame {
         forgotPasswordLink.setOpaque(false);
         forgotPasswordLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
         forgotPasswordLink.setFocusPainted(false);
+        forgotPasswordLink.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ForgotPasswordForm form = new ForgotPasswordForm(loginPage);
+            }
+        });
 
         checkPanel.setOpaque(false);
         checkPanel.setAlignmentX(Component.LEFT_ALIGNMENT);

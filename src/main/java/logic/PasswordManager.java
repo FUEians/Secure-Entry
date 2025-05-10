@@ -55,8 +55,8 @@ public class PasswordManager {
 
         for (Category c : categories) {
             if (c.getName().equals(categoryName)) {
-//                String encrypted = EncryptionUtil.encrypt(account.getPassword(), key);
-//                account.setPassword(encrypted);
+                String encrypted = EncryptionUtil.encrypt(account.getPassword(), key);
+                account.setPassword(encrypted);
                 c.addAccount(account);
                 saveCategories();
                 return;
