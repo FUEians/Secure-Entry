@@ -189,8 +189,7 @@ public class AddCategoryForm extends JDialog {
                     if (accountName != null && accountEmail != null && accountPassword != null) {
                         try {
                             SecretKey key = EncryptionUtil.generateAESKey();
-                            String encryptedPassword = EncryptionUtil.encrypt(accountPassword, key);
-                            
+//                            String encryptedPassword = EncryptionUtil.encrypt(accountPassword, key);                         ٍٍ
                         } catch (Exception ex) {
                             Logger.getLogger(AddCategoryForm.class.getName()).log(Level.SEVERE, null, ex);
                         }
